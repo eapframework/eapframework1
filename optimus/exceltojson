@@ -1,0 +1,7 @@
+df_pandas_grped = pdf.groupby('Input_file')
+final_dict = {}
+for key, grp in df_pandas_grped:
+    final_dict[str(key)] = grp.to_dict('records') 
+
+with open("/dbfs/FileStore/tables/jsaonoutput.json",'w')as f:
+        f.write(json.dumps(final_dict,indent=4))
